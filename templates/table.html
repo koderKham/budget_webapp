@@ -1,0 +1,21 @@
+{% extends "bootstrap/base.html" %}
+{%block content %}
+<table class="table-striped" style="width:100%">
+  <caption>Monthly Budget</caption>
+  <tr>
+    <th>Name</th>
+    <th>Amount</th>
+    <th>Percentage</th>
+  </tr>
+  {% for item in lst %}
+  <tr>
+    <td>{{ item.name }}</td>
+    <td> {{ item.amt }}</td>
+    {% if item.plus_minus == "expense" %}
+    <td> {{ lst[0].perc(item) }} % </td>
+    {% endif %}
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

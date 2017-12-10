@@ -1,0 +1,28 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+<h1>Your current balance is ${{ balance }}</h1>
+<div class="form-group" action="/">
+<form method="POST" action="/main">
+<input class="form-control" type="text" name="name" placeholder="Name" />
+<input class="form-control" type="text" name="amount" placeholder="Amount" />
+<input type="radio" name="plus_minus" value="income" > Income<br>
+<input type="radio" name="plus_minus" value="expense" checked> Expense<br>
+<button class="form-control btn btn-success" type="submit" value="#">Add Another</button>
+<a href="{{ url_for('table') }}">SPREADSHEET</a>
+</form>
+</div>
+
+{% endblock %}
+
+<!--
+<div class="form-group">
+<form>
+<input class="form-control" type="text" name="email" placeholder="Income" />
+<input class="form-control" type="text" name="transaction_name" placeholder="Name" />
+<input class="form-control" type="text" name="amount" placeholder="Amount" />
+</form>
+</div>
+{{ wtf.quick_form(form) }}
+<a href="{{ url_for("table") }}">SPREADSHEET</a>
+-->
