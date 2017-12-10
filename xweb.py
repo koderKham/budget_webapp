@@ -55,6 +55,7 @@ WTF_CSRF_ENABLED = True
 SECRET_KEY = 'you-will-never-guess'
 
 lst = []
+bal_lst = []
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -68,7 +69,7 @@ def add():
         balance = float(form.income.data)
         bal = Balance(balance)
         empty_list()
-        lst.append(bal)
+        bal_lst.append(bal)
         return render_template("bal.html", t_form=t_form, balance=balance)
     return render_template("t.html", form=form)
 
@@ -92,7 +93,7 @@ def hello():
 
 @app.route("/table", methods=["GET", "POST"])
 def table():
-    return render_template("table.html", lst=lst)
+    return render_template("table.html", lst=lst, bal_lst=bal_lst)
 
 
 if __name__ == '__main__':
