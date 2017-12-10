@@ -83,7 +83,7 @@ def hello():
             new_bal = bal_lst[0].plus(obj)
             return render_template("bal.html", balance=new_bal)
         elif plus_minus == "expense":
-            new_bal = lst[0].minus(obj)
+            new_bal = bal_lst[0].minus(obj)
             print("New balance is {}".format(new_bal))
             return render_template("bal.html", balance=new_bal)
     else:
