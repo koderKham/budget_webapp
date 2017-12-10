@@ -80,9 +80,7 @@ def hello():
         obj = Transaction(request.form["name"], float(request.form["amount"]), plus_minus)
         lst.append(obj)
         if plus_minus == "income":
-            print(lst)
-            new_bal = lst[0].plus(obj)
-            print("New balance is {}".format(new_bal))
+            new_bal = bal_lst[0].plus(obj)
             return render_template("bal.html", balance=new_bal)
         elif plus_minus == "expense":
             new_bal = lst[0].minus(obj)
