@@ -47,7 +47,9 @@ class Balance:
         return self.balance
 
 
-
+def empty_list():
+    for i in lst:
+        lst.remove(i)
 
 WTF_CSRF_ENABLED = True
 SECRET_KEY = 'you-will-never-guess'
@@ -65,6 +67,7 @@ def add():
     if form.is_submitted():
         balance = float(form.income.data)
         bal = Balance(balance)
+        empty_list()
         lst.append(bal)
         return render_template("bal.html", t_form=t_form, balance=balance)
     return render_template("t.html", form=form)
