@@ -56,6 +56,9 @@ SECRET_KEY = 'you-will-never-guess'
 
 lst = []
 bal_lst = []
+def empty_list(it):
+    for i in it:
+        it.remove(i)
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -68,7 +71,8 @@ def add():
     if form.is_submitted():
         balance = float(form.income.data)
         bal = Balance(balance)
-        empty_list()
+        empty_list(lst)
+        empty_list(bal_lst)
         bal_lst.append(bal)
         return render_template("bal.html", t_form=t_form, balance=balance)
     return render_template("t.html", form=form)
@@ -94,4 +98,4 @@ def table():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
