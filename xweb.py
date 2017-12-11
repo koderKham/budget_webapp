@@ -84,7 +84,6 @@ def hello():
             return render_template("bal.html", balance=new_bal)
         elif plus_minus == "expense":
             new_bal = bal_lst[0].minus(obj)
-            print("New balance is {}".format(new_bal))
             return render_template("bal.html", balance=new_bal)
     else:
         return render_template("bal.html")
@@ -95,4 +94,4 @@ def table():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
