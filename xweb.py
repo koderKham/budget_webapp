@@ -66,13 +66,13 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 @app.route("/", methods=["GET", "POST"])
 def add():
+    empty_list(lst)
+    empty_list(bal_lst)
     form = Initial_Form()
     t_form = transactionForm()
     if form.is_submitted():
         balance = float(form.income.data)
         bal = Balance(balance)
-        empty_list(lst)
-        empty_list(bal_lst)
         bal_lst.append(bal)
         return render_template("bal.html", t_form=t_form, balance=balance)
     return render_template("t.html", form=form)
