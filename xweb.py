@@ -55,7 +55,7 @@ WTF_CSRF_ENABLED = True
 SECRET_KEY = 'you-will-never-guess'
 
 lst = []
-
+bal_lst = []
 def empty_list(it):
     for i in it:
         it.remove(i)
@@ -66,6 +66,7 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 @app.route("/", methods=["GET", "POST"])
 def add():
+    empty_list(bal_lst)
     empty_list(lst)
     global bal_lst
     form = Initial_Form()
@@ -73,9 +74,8 @@ def add():
     if form.is_submitted():
         balance = float(form.income.data)
         bal = Balance(balance)
-        bal_lst = []
         bal_lst.append(bal)
-        return render_template("bal.html", t_form=t_form, balance=balance, bal_lst=bal_lst, lst=lst)
+        return render_template("bal.html", t_form=t_form, balance=balance)
     return render_template("t.html", form=form)
 
 @app.route("/main", methods=["GET", "POST"])
@@ -86,10 +86,10 @@ def hello():
         lst.append(obj)
         if plus_minus == "income":
             new_bal = bal_lst[0].plus(obj)
-            return render_template("bal.html", balance=new_bal, bal_lst=bal_lst, lst=lst)
+            return render_template("bal.html", balance=new_bal)
         elif plus_minus == "expense":
             new_bal = bal_lst[0].minus(obj)
-            return render_template("bal.html", balance=new_bal, bal_lst=bal_lst, lst=lst)
+            return render_template("bal.html", balance=new_bal)
     else:
         return render_template("bal.html")
 
