@@ -74,7 +74,7 @@ def add():
         balance = float(form.income.data)
         bal = Balance(balance)
         bal_lst.append(bal)
-        return render_template("bal.html", t_form=t_form, balance=balance)
+        return render_template("bal.html", t_form=t_form, balance=balance, bal_lst=bal_lst, lst=lst)
     return render_template("t.html", form=form)
 
 @app.route("/main", methods=["GET", "POST"])
@@ -85,10 +85,10 @@ def hello():
         lst.append(obj)
         if plus_minus == "income":
             new_bal = bal_lst[0].plus(obj)
-            return render_template("bal.html", balance=new_bal)
+            return render_template("bal.html", balance=new_bal, bal_lst=bal_lst, lst=lst)
         elif plus_minus == "expense":
             new_bal = bal_lst[0].minus(obj)
-            return render_template("bal.html", balance=new_bal)
+            return render_template("bal.html", balance=new_bal, bal_lst=bal_lst, lst=lst)
     else:
         return render_template("bal.html")
 
