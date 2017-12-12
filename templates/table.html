@@ -12,7 +12,7 @@
     <td>{{ item.name }}</td>
     <td> {{ item.amt }}</td>
     {% if item.plus_minus == "expense" %}
-    <td> {{ bal_lst[0].perc(item) }} % </td>
+    <td> {{ bal.perc(item) }} % </td>
     {% endif %}
   </tr>
   {% endfor %}
