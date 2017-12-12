@@ -41,7 +41,7 @@ class Balance:
 
     def perc(self, y):
         math = y.amt / self.initial_income
-        return math * 100
+        return round(math * 100, 2)
 
     def request(self):
         return self.balance
