@@ -66,7 +66,7 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 @app.route("/", methods=["GET", "POST"])
 def add():
-    empty_list(bal_lst)
+    #empty_list(bal_lst)
     empty_list(lst)
     bal_lst = []
     form = Initial_Form()
