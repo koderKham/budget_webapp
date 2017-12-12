@@ -1,1 +1,1 @@
-web: gunicorn app:xweb.py
+web: gunicorn app:xweb
