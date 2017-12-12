@@ -1,1 +1,1 @@
-web: waitress-serve --port=$PORT xweb.wsgi:application
+web: waitress-serve --port=$PORT xweb.py.wsgi:application
