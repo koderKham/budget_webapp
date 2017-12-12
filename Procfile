@@ -1,1 +1,1 @@
-web: gunicorn xweb:app
+web: waitress-serve --port=$PORT xweb.wsgi:application
