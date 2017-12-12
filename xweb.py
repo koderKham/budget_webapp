@@ -55,7 +55,7 @@ WTF_CSRF_ENABLED = True
 SECRET_KEY = 'you-will-never-guess'
 
 lst = []
-global bal_lst
+bal_lst = []
 def empty_list(it):
     for i in it:
         it.remove(i)
@@ -68,7 +68,7 @@ app.config['SECRET_KEY'] = SECRET_KEY
 def add():
     #empty_list(bal_lst)
     empty_list(lst)
-    bal_lst = []
+    empty_list(bal_lst)
     form = Initial_Form()
     t_form = transactionForm()
     if form.is_submitted():
