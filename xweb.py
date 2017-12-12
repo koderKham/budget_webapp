@@ -73,7 +73,7 @@ def add():
     if form.is_submitted():
         balance = float(form.income.data)
         bal = Balance(balance)
-        #bal_lst.append(bal)
+        bal_lst.append(bal)
         return render_template("bal.html", t_form=t_form, balance=balance)
     return render_template("t.html", form=form)
 
@@ -84,17 +84,17 @@ def hello():
         obj = Transaction(request.form["name"], float(request.form["amount"]), plus_minus)
         lst.append(obj)
         if plus_minus == "income":
-            new_bal = bal.plus(obj)#bal_lst[0].plus(obj)
+            new_bal = bal_lst[0].plus(obj)
             return render_template("bal.html", balance=new_bal)
         elif plus_minus == "expense":
-            new_bal = bal.minus(obj)#bal_lst[0].minus(obj)
+            new_bal = bal_lst[0].minus(obj)
             return render_template("bal.html", balance=new_bal)
     else:
         return render_template("bal.html")
 
 @app.route("/table", methods=["GET", "POST"])
 def table():
-    return render_template("table.html", lst=lst, bal=bal)#bal_lst=bal_lst)
+    return render_template("table.html", lst=lst, bal_lst=bal_lst)
 
 
 if __name__ == '__main__':
