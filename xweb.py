@@ -67,6 +67,8 @@ app.config['SECRET_KEY'] = SECRET_KEY
 @app.route("/", methods=["GET", "POST"])
 def add():
     #empty_list(bal_lst)
+    global bal_lst
+    global lst
     empty_list(lst)
     empty_list(bal_lst)
     form = Initial_Form()
@@ -80,6 +82,8 @@ def add():
 
 @app.route("/main", methods=["GET", "POST"])
 def hello():
+    global bal_lst
+    global lst
     if request.method == "POST":
         plus_minus = request.form["plus_minus"]
         obj = Transaction(request.form["name"], float(request.form["amount"]), plus_minus)
@@ -95,6 +99,8 @@ def hello():
 
 @app.route("/table", methods=["GET", "POST"])
 def table():
+    global bal_lst
+    global lst
     return render_template("table.html", lst=lst, bal_lst=bal_lst)
 
 
