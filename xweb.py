@@ -54,7 +54,7 @@ WTF_CSRF_ENABLED = True
 SECRET_KEY = 'you-will-never-guess'
 
 lst = []
-bal = None
+bal = object
 def empty_list(it):
     for i in it:
         it.remove(i)
@@ -81,7 +81,6 @@ def hello():
     if request.method == "POST":
         plus_minus = request.form["plus_minus"]
         obj = Transaction(request.form["name"], float(request.form["amount"]), plus_minus)
-        empty_list(lst)
         lst.append(obj)
         if plus_minus == "income":
             new_bal = bal.plus(obj)
