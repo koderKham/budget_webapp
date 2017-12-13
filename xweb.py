@@ -80,6 +80,7 @@ def add():
 def hello():
     global lst
     global bal
+    empty_list(lst)
     if request.method == "POST":
         plus_minus = request.form["plus_minus"]
         obj = Transaction(request.form["name"], float(request.form["amount"]), plus_minus)
@@ -96,9 +97,7 @@ def hello():
 @app.route("/table", methods=["GET", "POST"])
 def table():
     global lst
-    print(lst)
     global bal
-    print(bal)
     return render_template("table.html", lst=lst, bal=bal)
 
 
