@@ -22,7 +22,7 @@ class Transaction:
          self.plus_minus = plus_minus
 
 class Initial_Form(Form):
-    income = StringField("Whats your income? ", validators=[DataRequired()])
+    income = StringField("u'Whats your income? ", validators=[DataRequired()])
     submit = SubmitField("Submit")
 
 class Balance:
@@ -68,6 +68,7 @@ app.config['SECRET_KEY'] = SECRET_KEY
 def add():
     global bal_lst
     bal_lst = []
+    empty_list(lst)
     form = Initial_Form()
     t_form = transactionForm()
     if form.is_submitted():
@@ -79,9 +80,7 @@ def add():
 
 @app.route("/main", methods=["GET", "POST"])
 def hello():
-    global bal_lst
     global lst
-    lst = []
     if request.method == "POST":
         plus_minus = request.form["plus_minus"]
         obj = Transaction(request.form["name"], float(request.form["amount"]), plus_minus)
