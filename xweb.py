@@ -96,7 +96,9 @@ def hello():
 @app.route("/table", methods=["GET", "POST"])
 def table():
     global lst
+    print(lst)
     global bal
+    print(bal)
     return render_template("table.html", lst=lst, bal=bal)
 
 
