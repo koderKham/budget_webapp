@@ -66,11 +66,8 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 @app.route("/", methods=["GET", "POST"])
 def add():
-    #empty_list(bal_lst)
     global bal_lst
-    global lst
-    empty_list(lst)
-    empty_list(bal_lst)
+    bal_lst = []
     form = Initial_Form()
     t_form = transactionForm()
     if form.is_submitted():
@@ -84,6 +81,7 @@ def add():
 def hello():
     global bal_lst
     global lst
+    lst = []
     if request.method == "POST":
         plus_minus = request.form["plus_minus"]
         obj = Transaction(request.form["name"], float(request.form["amount"]), plus_minus)
