@@ -46,6 +46,9 @@ class Balance:
     def request(self):
         return self.balance
 
+    def clean(self, y):
+        for i in y:
+            y.remove(i)
 
 def empty_list():
     for i in lst:
