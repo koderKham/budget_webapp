@@ -58,7 +58,7 @@ bal = None
 def empty_list(it):
     for i in it:
         it.remove(i)
-empty_list(lst)
+#empty_list(lst)
 
 app = Flask(__name__)
 Bootstrap(app)
