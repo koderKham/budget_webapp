@@ -54,7 +54,7 @@ WTF_CSRF_ENABLED = True
 SECRET_KEY = 'you-will-never-guess'
 
 lst = []
-bal = object
+bal = False
 def empty_list(it):
     for i in it:
         it.remove(i)
