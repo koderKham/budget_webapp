@@ -71,7 +71,7 @@ app.config['SECRET_KEY'] = SECRET_KEY
 def add():
     global bal_lst
     #bal_lst = []
-    empty_list(lst)
+    #empty_list(lst)
     form = Initial_Form()
     t_form = transactionForm()
     if form.is_submitted():
