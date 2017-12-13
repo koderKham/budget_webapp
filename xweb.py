@@ -23,9 +23,11 @@ class Initial_Form(Form):
 
 class Balance:
 
+
     def __init__(self, initial_income):
         self.initial_income = initial_income
         self.balance = self.initial_income
+        self.lst = []
 
     def minus(self, y):
         self.balance = self.balance - y.amt
@@ -53,7 +55,7 @@ def empty_list():
 WTF_CSRF_ENABLED = True
 SECRET_KEY = 'you-will-never-guess'
 
-lst = []
+#lst = []
 bal = False
 def empty_list(it):
     for i in it:
@@ -72,7 +74,7 @@ def add():
         balance = float(form.income.data)
         global bal
         bal = Balance(balance)
-        bal.clean(lst)
+        bal.clean(bal.lst)
         return render_template("bal.html", t_form=t_form, balance=balance)
     return render_template("t.html", form=form)
 
@@ -83,7 +85,7 @@ def hello():
     if request.method == "POST":
         plus_minus = request.form["plus_minus"]
         obj = Transaction(request.form["name"], float(request.form["amount"]), plus_minus)
-        lst.append(obj)
+        bal.lst.append(obj)#lst.append(obj)
         if plus_minus == "income":
             new_bal = bal.plus(obj)
             return render_template("bal.html", balance=new_bal)
@@ -95,9 +97,9 @@ def hello():
 
 @app.route("/table", methods=["GET", "POST"])
 def table():
-    global lst
+    #global lst
     global bal
-    return render_template("table.html", lst=lst, bal=bal)
+    return render_template("table.html", bal=bal)#,lst=lst)
 
 
 if __name__ == '__main__':

@@ -8,7 +8,7 @@
     <th>Amount</th>
     <th>Percentage</th>
   </tr>
-  {% for item in lst %}
+  {% for item in bal.lst %}
   <tr>
     <td>{{ item.name }}</td>
     <td> {{ item.amt }}</td>
@@ -20,4 +20,4 @@
 </table>
 </body>
 {% endblock %}
-{{ bal.clean(lst) }}
+{{ bal.clean(bal.lst) }}
