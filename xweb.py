@@ -80,7 +80,6 @@ def add():
 def hello():
     global lst
     global bal
-    empty_list(lst)
     if request.method == "POST":
         plus_minus = request.form["plus_minus"]
         obj = Transaction(request.form["name"], float(request.form["amount"]), plus_minus)
