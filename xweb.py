@@ -72,6 +72,7 @@ def add():
         balance = float(form.income.data)
         global bal
         bal = Balance(balance)
+        bal.clean(lst)
         return render_template("bal.html", t_form=t_form, balance=balance)
     return render_template("t.html", form=form)
 
