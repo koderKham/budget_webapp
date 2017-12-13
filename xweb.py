@@ -4,10 +4,6 @@ from flask_wtf import Form
 from wtforms import StringField, DecimalField, validators, SubmitField, RadioField
 from wtforms.validators import DataRequired
 
-#def bal():
-    #take the income & remove the field, but display balance
-    #take the name and amount and make it a dictionary then add it to a list
-    #do calculation
 class transactionForm(Form):
     name = StringField("Name", validators=[DataRequired()])
     amount = StringField("Amount", validators=[DataRequired()])
@@ -62,6 +58,7 @@ bal = None
 def empty_list(it):
     for i in it:
         it.remove(i)
+empty_list(lst)
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -69,16 +66,12 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 @app.route("/", methods=["GET", "POST"])
 def add():
-    global bal_lst
-    #bal_lst = []
-    #empty_list(lst)
     form = Initial_Form()
     t_form = transactionForm()
     if form.is_submitted():
         balance = float(form.income.data)
         global bal
         bal = Balance(balance)
-        #bal_lst.append(bal)
         return render_template("bal.html", t_form=t_form, balance=balance)
     return render_template("t.html", form=form)
 
