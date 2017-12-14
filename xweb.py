@@ -47,6 +47,9 @@ class Balance:
         del self.lst[:]
         return "You have ${} left!".format(self.balance)
 
+    def endit(self):
+        del self
+
 
 WTF_CSRF_ENABLED = True
 SECRET_KEY = 'you-will-never-guess'
