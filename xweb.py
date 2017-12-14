@@ -46,6 +46,7 @@ class Balance:
     def clean(self, y):
         for i in y:
             y.remove(i)
+        return "You have ${} left!".format(self.balance)
 
 
 WTF_CSRF_ENABLED = True
