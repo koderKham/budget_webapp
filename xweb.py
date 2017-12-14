@@ -48,19 +48,9 @@ class Balance:
         for i in y:
             y.remove(i)
 
-def empty_list():
-    for i in lst:
-        lst.remove(i)
 
 WTF_CSRF_ENABLED = True
 SECRET_KEY = 'you-will-never-guess'
-
-#lst = []
-bal = False
-def empty_list(it):
-    for i in it:
-        it.remove(i)
-#empty_list(lst)
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -80,7 +70,6 @@ def add():
 
 @app.route("/main", methods=["GET", "POST"])
 def hello():
-    global lst
     global bal
     if request.method == "POST":
         plus_minus = request.form["plus_minus"]
@@ -97,9 +86,8 @@ def hello():
 
 @app.route("/table", methods=["GET", "POST"])
 def table():
-    #global lst
     global bal
-    return render_template("table.html", bal=bal)#,lst=lst)
+    return render_template("table.html", bal=bal)
 
 
 if __name__ == '__main__':
