@@ -43,9 +43,9 @@ class Balance:
     def request(self):
         return self.balance
 
-    def clean(self, y):
-        for i in y:
-            y.remove(i)
+    def clean(self):
+        for i in self.lst:
+            self.lst.remove(i)
         return "You have ${} left!".format(self.balance)
 
 
