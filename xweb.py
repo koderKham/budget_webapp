@@ -44,8 +44,7 @@ class Balance:
         return self.balance
 
     def clean(self):
-        for i in self.lst:
-            self.lst.remove(i)
+        del self.lst[:]
         return "You have ${} left!".format(self.balance)
 
 
