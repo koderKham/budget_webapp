@@ -23,7 +23,6 @@ class Initial_Form(Form):
 
 class Balance:
 
-
     def __init__(self, initial_income):
         self.initial_income = initial_income
         self.balance = self.initial_income
@@ -74,12 +73,13 @@ def hello():
     if request.method == "POST":
         plus_minus = request.form["plus_minus"]
         obj = Transaction(request.form["name"], float(request.form["amount"]), plus_minus)
-        bal.lst.append(obj)#lst.append(obj)
+        bal.lst.append(obj)
         if plus_minus == "income":
             new_bal = bal.plus(obj)
             return render_template("bal.html", balance=new_bal)
         elif plus_minus == "expense":
             new_bal = bal.minus(obj)
+            print(new_bal)
             return render_template("bal.html", balance=new_bal)
     else:
         return render_template("bal.html")
