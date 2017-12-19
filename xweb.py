@@ -79,13 +79,14 @@ def hello():
     if request.method == "POST":
         plus_minus = request.form["plus_minus"]
         obj = Transaction(request.form["name"], float(request.form["amount"]), plus_minus)
+        bal.lst.append(obj)
         if plus_minus == "income":
             new_bal = bal.plus(obj)
             return render_template("bal.html", new_bal=new_bal)
         elif plus_minus == "expense":
             new_bal = bal.minus(obj)
             return render_template("bal.html", new_bal=new_bal)
-        bal.lst.append(obj)
+
     else:
         return render_template("bal.html")
 
