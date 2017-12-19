@@ -63,17 +63,14 @@ app.secret_key = os.urandom(24)
 
 @app.route("/", methods=["GET", "POST"])
 def add():
-    if bal:
-        bal.endit()
-    else:
-        session['user'] = 'user'
-        form = Initial_Form()
-        t_form = transactionForm()
-        if form.is_submitted():
-            balance = float(form.income.data)
-            global bal
-            bal = Balance(balance)
-            return render_template("bal.html", t_form=t_form, balance=balance)
+    session['user'] = 'user'
+    form = Initial_Form()
+    t_form = transactionForm()
+    if form.is_submitted():
+        balance = float(form.income.data)
+        global bal
+        bal = Balance(balance)
+        return render_template("bal.html", t_form=t_form, balance=balance)
     return render_template("t.html", form=form)
 
 @app.route("/main", methods=["GET", "POST"])
