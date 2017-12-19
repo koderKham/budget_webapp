@@ -97,8 +97,8 @@ def table():
     try:
         global bal
         return render_template("table.html", bal=bal)
-except:
-    return "<h1>Press back and Try Again</h1>"
+    except:
+        return "<h1>Press back and Try Again</h1>"
 
 @app.route("/erase")
 def erase():
