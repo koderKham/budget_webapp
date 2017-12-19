@@ -107,4 +107,4 @@ def erase():
         return "Press back and Try Again"
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, threaded=True)
