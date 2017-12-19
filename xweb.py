@@ -97,5 +97,11 @@ def table():
         global bal
         return render_template("table.html", bal=bal)
 
+@app.route("/erase")
+def erase():
+    global bal
+    bal.endit
+    return redirect("/")
+
 if __name__ == '__main__':
     app.run(debug=True)
