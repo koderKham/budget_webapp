@@ -63,6 +63,8 @@ app.secret_key = os.urandom(24)
 
 @app.route("/", methods=["GET", "POST"])
 def add():
+    if bal:
+        bal.endit()
     session['user'] = 'user'
     form = Initial_Form()
     t_form = transactionForm()
