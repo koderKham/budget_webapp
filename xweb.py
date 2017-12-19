@@ -88,7 +88,7 @@ def hello():
                 new_bal = bal.minus(obj)
                 return render_template("bal.html", balance=new_bal)
     except:
-        pass
+        return "Press back and Try Again"
     else:
         return render_template("bal.html")
 
