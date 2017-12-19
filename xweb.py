@@ -76,24 +76,25 @@ def add():
 @app.route("/main", methods=["GET", "POST"])
 def hello():
     global bal
-    if request.method == "POST":
-        plus_minus = request.form["plus_minus"]
-        obj = Transaction(request.form["name"], float(request.form["amount"]), plus_minus)
-        bal.lst.append(obj)
-        if plus_minus == "income":
-            new_bal = bal.plus(obj)
-            return render_template("bal.html", balance=new_bal)
-        elif plus_minus == "expense":
-            new_bal = bal.minus(obj)
-            return render_template("bal.html", balance=new_bal)
-
+    try:
+        if request.method == "POST":
+            plus_minus = request.form["plus_minus"]
+            obj = Transaction(request.form["name"], float(request.form["amount"]), plus_minus)
+            bal.lst.append(obj)
+            if plus_minus == "income":
+                new_bal = bal.plus(obj)
+                return render_template("bal.html", balance=new_bal)
+            elif plus_minus == "expense":
+                new_bal = bal.minus(obj)
+                return render_template("bal.html", balance=new_bal)
     else:
         return render_template("bal.html")
 
 @app.route("/table", methods=["GET", "POST"])
 def table():
-    global bal
-    return render_template("table.html", bal=bal)
+    try:
+        global bal
+        return render_template("table.html", bal=bal)
 
 
 if __name__ == '__main__':
