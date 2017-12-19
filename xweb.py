@@ -82,10 +82,10 @@ def hello():
         bal.lst.append(obj)
         if plus_minus == "income":
             new_bal = bal.plus(obj)
-            return render_template("bal.html", new_bal=new_bal)
+            return render_template("bal.html", balance=new_bal)
         elif plus_minus == "expense":
             new_bal = bal.minus(obj)
-            return render_template("bal.html", new_bal=new_bal)
+            return render_template("bal.html", balance=new_bal)
 
     else:
         return render_template("bal.html")
