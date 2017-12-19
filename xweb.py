@@ -87,8 +87,8 @@ def hello():
             elif plus_minus == "expense":
                 new_bal = bal.minus(obj)
                 return render_template("bal.html", balance=new_bal)
-    else:
-        return render_template("bal.html")
+        else:
+            return render_template("bal.html")
 
 @app.route("/table", methods=["GET", "POST"])
 def table():
