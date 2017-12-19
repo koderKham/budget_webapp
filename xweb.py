@@ -70,7 +70,6 @@ def add():
         balance = float(form.income.data)
         global bal
         bal = Balance(balance)
-        bal.clean()
         return render_template("bal.html", t_form=t_form, balance=balance)
     return render_template("t.html", form=form)
 
@@ -83,10 +82,10 @@ def hello():
         bal.lst.append(obj)
         if plus_minus == "income":
             new_bal = bal.plus(obj)
-            return render_template("bal.html", balance=new_bal)
+            return render_template("bal.html", new_bal=new_bal)
         elif plus_minus == "expense":
             new_bal = bal.minus(obj)
-            return render_template("bal.html", balance=new_bal)
+            return render_template("bal.html", new_bal=new_bal)
     else:
         return render_template("bal.html")
 
