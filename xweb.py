@@ -88,14 +88,17 @@ def hello():
                 new_bal = bal.minus(obj)
                 return render_template("bal.html", balance=new_bal)
     except:
-        return "Press back and Try Again"
+        return "<h1>Press back and Try Again</h1>"
     else:
         return render_template("bal.html")
 
 @app.route("/table", methods=["GET", "POST"])
 def table():
+    try:
         global bal
         return render_template("table.html", bal=bal)
+except:
+    return "<h1>Press back and Try Again</h1>"
 
 @app.route("/erase")
 def erase():
