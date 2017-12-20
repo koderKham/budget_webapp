@@ -102,12 +102,10 @@ def table():
 
 @app.route("/erase")
 def erase():
-    try:
-        global bal
-        bal.endit
-        return redirect("/")
-    except:
-        return "Press back and Try Again"
+    global bal
+    bal.endit
+    return redirect("/")
+
 
 if __name__ == '__main__':
     app.run(debug=True, threaded=True)
