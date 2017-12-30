@@ -104,7 +104,6 @@ def table():
 def erase():
     global bal
     bal.endit
-    session.pop("user")
     return redirect("/")
 
 
