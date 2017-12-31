@@ -2,7 +2,7 @@
 
 {% block content %}
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
-<body style="background-color: lightblue; color: orange;">
+<body style="background-color: lightblue; color: pink;">
 <h1>You started with ${{ balance }}<br></h1>
 Your balance is <h4 class="bal">$$$</h4>
 <div class="main form-group" action="/">
@@ -54,7 +54,7 @@ function transact(a, b) {
 
 var inc = {{ balance }};
 var balance = inc;
-  var t_list = [];
+var t_list = [];
 
 $(".form").submit(function() {
     var name = $("#name").val();
@@ -78,42 +78,3 @@ $(".form").submit(function() {
 </script>
 </body>
 {% endblock %}
-<!--
-function perc(a, b) {
-  var math = b.amt / a;
-  return math;
-};
-
-var T_form = function(a, b, c)
-{
-    this.name = a;
-    this.amt = b;
-    this.plus_minus = c;
-};
-
-function transact(a, b) {
-  if (b.plus_minus == "expense") {
-    balance = a - b.amt;
-};
-};
-
-var inc = {{ balance }};
-var balance = inc;
-  var t_list = [];
-
-$(".form").submit(function() {
-    var name = $("#name").val();
-    var amt = $("#amt").val();
-    var plus_minus = $(".form input[type='radio']:checked").val();
-
-    var tra = new T_form(name, amt, plus_minus);
-
-    transact(balance, tra);
-
-    t_list.push(tra);
-
-    $(".main").append("<h3>Tranaction Name: " + name +  "Transaction percentage: " + perc(inc, tra) + "</h3>");
-
-    event.preventDefault();
-});
--->
