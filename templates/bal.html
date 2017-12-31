@@ -1,29 +1,119 @@
 {% extends "bootstrap/base.html" %}
 
 {% block content %}
-<body style="background-color: lightblue;">
-<h1>Your current balance is ${{ balance }}</h1>
-<div class="form-group" action="/">
-<form method="POST" action="/main">
-<input class="form-control" type="text" name="name" placeholder="Name" />
-<input class="form-control" type="text" name="amount" placeholder="Amount" />
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+<body style="background-color: lightblue; color: orange;">
+<h1>You started with ${{ balance }}<br></h1>
+Your balance is <h4 class="bal">$$$</h4>
+<div class="main form-group" action="/">
+<form class="form" method="POST" action="/main">
+<input id="name" class="form-control" type="text" name="name" placeholder="Name" />
+<input id="amt" class="form-control" type="text" name="amount" placeholder="Amount" />
 <input type="radio" name="plus_minus" value="income" > Income<br>
 <input type="radio" name="plus_minus" value="expense" checked> Expense<br>
-<button class="form-control btn btn-success" type="submit" value="#">Add Another</button>
-<a href="{{ url_for('table') }}">SPREADSHEET</a>
+<button class="form-control btn btn-info" type="submit" value="#">Add Another</button>
 </form>
 </div>
+
+<table class="table-striped" style="width:100%">
+  Monthly Budget
+  <tr>
+    <th>Name</th>
+    <th>Amount</th>
+    <th>Percentage</th>
+  </tr>
+</table>
+<script>
+var inc = {{ balance }};
+function perc(a, b) {
+  if (b.plus_minus == "expense") {
+    var math = b.amt / a;
+    return math * 100;
+  }
+  else {
+    return "Balance Increased";
+  }
+};
+
+var T_form = function(a, b, c)
+{
+    this.name = a;
+    this.amt = b;
+    this.plus_minus = c;
+};
+
+function transact(a, b) {
+  if (b.plus_minus == "expense") {
+    balance = a - b.amt;
+
+}
+  else {
+    balance = a + b.amt;
+  }
+};
+
+var inc = {{ balance }};
+var balance = inc;
+  var t_list = [];
+
+$(".form").submit(function() {
+    var name = $("#name").val();
+    var amt = $("#amt").val();
+    var plus_minus = $(".form input[type='radio']:checked").val();
+
+    var tra = new T_form(name, amt, plus_minus);
+
+    transact(balance, tra);
+
+    t_list.push(tra);
+    var table = $(".table-striped").children();
+    table.append("<tr><td>" + name +  "</td><td>" + amt + "</td><td>" + perc(inc, tra) + "</td></tr>");
+    $(".bal").text(" ");
+    $(".bal").text(balance);
+    $("#name").val("");
+    $("#amt").val("");
+    event.preventDefault();
+});
+
+</script>
 </body>
 {% endblock %}
-
 <!--
-<div class="form-group">
-<form>
-<input class="form-control" type="text" name="email" placeholder="Income" />
-<input class="form-control" type="text" name="transaction_name" placeholder="Name" />
-<input class="form-control" type="text" name="amount" placeholder="Amount" />
-</form>
-</div>
-{{ wtf.quick_form(form) }}
-<a href="{{ url_for("table") }}">SPREADSHEET</a>
+function perc(a, b) {
+  var math = b.amt / a;
+  return math;
+};
+
+var T_form = function(a, b, c)
+{
+    this.name = a;
+    this.amt = b;
+    this.plus_minus = c;
+};
+
+function transact(a, b) {
+  if (b.plus_minus == "expense") {
+    balance = a - b.amt;
+};
+};
+
+var inc = {{ balance }};
+var balance = inc;
+  var t_list = [];
+
+$(".form").submit(function() {
+    var name = $("#name").val();
+    var amt = $("#amt").val();
+    var plus_minus = $(".form input[type='radio']:checked").val();
+
+    var tra = new T_form(name, amt, plus_minus);
+
+    transact(balance, tra);
+
+    t_list.push(tra);
+
+    $(".main").append("<h3>Tranaction Name: " + name +  "Transaction percentage: " + perc(inc, tra) + "</h3>");
+
+    event.preventDefault();
+});
 -->

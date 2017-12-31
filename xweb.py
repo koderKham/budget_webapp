@@ -63,7 +63,9 @@ app.secret_key = os.urandom(24)
 
 @app.route("/", methods=["GET", "POST"])
 def add():
-    session['user'] = 'user'
+    global random_number
+    random_number = os.urandom(64)
+    session['user'] = random_number
     form = Initial_Form()
     t_form = transactionForm()
     if form.is_submitted():
@@ -103,6 +105,8 @@ def table():
 @app.route("/erase")
 def erase():
     global bal
+    global random_number
+    session.pop('user', None)
     bal.endit
     return redirect("/")
 
